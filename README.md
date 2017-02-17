@@ -2,4 +2,8 @@
 
 ## Install
 
-`pip install scrapy`
+Run the following command:
+
+``` sh
+pip install scrapy
+```
