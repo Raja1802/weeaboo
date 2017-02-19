@@ -1,4 +1,4 @@
-import scrapy
+from scrapy import Item
 
-class WeeabooItem(scrapy.Item):
+class WeeabooItem(Item):
     pass

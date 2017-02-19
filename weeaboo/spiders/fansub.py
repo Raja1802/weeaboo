@@ -1,19 +1,19 @@
-import scrapy
+from scrapy import Spider, Request
 
-class FansubSpider(scrapy.Spider):
+class FansubSpider(Spider):
     name = 'fansub'
     allowed_domains = ['fansub.tv']
     start_urls = ['http://fansub.tv/listing.html']
 
     def parse(self, response):
         for href in response.css('.matv_left a::attr("href")').extract():
-            yield scrapy.Request(response.urljoin(href), self.parse_anime)
+            yield Request(response.urljoin(href), self.parse_anime)
 
     def parse_anime(self, response):
         yield {}
 
         for href in response.css('.matv_center a::attr("href")').extract():
-            yield scrapy.Request(response.urljoin(href), self.parse_episode)
+            yield Request(response.urljoin(href), self.parse_episode)
 
     def parse_episode(self, response):
         yield {}
