@@ -12,7 +12,7 @@ class AnimefreakSpider(Spider):
     def parse_anime(self, response):
         yield {}
 
-        for href in response.css('.book-navigation .menu a::attr("href")').extract():
+        for href in response.css('.book-navigation a::attr("href")').extract():
             yield Request(response.urljoin(href), self.parse_episode)
 
     def parse_episode(self, response):

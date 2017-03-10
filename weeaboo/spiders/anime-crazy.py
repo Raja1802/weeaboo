@@ -6,7 +6,7 @@ class AnimeCrazySpider(Spider):
     start_urls = ['http://anime-crazy.org/animelist']
 
     def parse(self, response):
-        for href in response.css('.hover-table a::attr("href")').extract():
+        for href in response.css('[width="99%"] a::attr("href")').extract():
             yield Request(href, self.parse_anime)
 
     def parse_anime(self, response):
