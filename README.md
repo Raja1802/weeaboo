@@ -1,7 +1,7 @@
 # Weeaboo (Bot)
 
-## Install
+## Install / Update
 
 ``` sh
-pip install scrapy
+pip install -U -r requirements.txt
 ```
