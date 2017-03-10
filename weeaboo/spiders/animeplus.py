@@ -16,10 +16,10 @@ class AnimeplusSpider(Spider):
         loader = AnimeLoader(Anime(), response.css('#series_info'))
 
         loader.add_css('title', 'h1')
-        loader.add_css('alt_titles', 'span:contains("Titles") ~ div')
+        #loader.add_css('alt_titles', 'span:contains("Titles") ~ div')
         loader.add_css('category', 'span:contains("Category") ~ a')
         loader.add_xpath('status', '//div[./span[contains(.,"Status")]]/text()')
-        loader.add_css('genres', '.red_box a')
+        #loader.add_css('genres', '.red_box a')
         loader.add_css('image', '#series_image')
         loader.add_css('synopsis', 'span:contains("Description") ~ div')
 
