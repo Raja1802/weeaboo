@@ -7,5 +7,5 @@
 ## Install / Update
 
 ``` sh
-pip install -U -r requirements.txt
+pip install -U Scrapy
 ```
