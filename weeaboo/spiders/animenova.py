@@ -1,5 +1,8 @@
 from scrapy import Spider, Request
 
+from ..loaders import AnimeLoader
+from ..items import Anime
+
 class AnimenovaSpider(Spider):
     name = 'animenova'
     allowed_domains = ['animenova.org']
@@ -10,10 +13,8 @@ class AnimenovaSpider(Spider):
             yield Request(href, self.parse_anime)
 
     def parse_anime(self, response):
-        yield {}
+        loader = AnimeLoader(Anime(), response)
 
-        for href in response.css('#videos a::attr("href")').extract():
-            yield Request(href, self.parse_episode)
 
-    def parse_episode(self, response):
-        yield {}
+
+        yield loader.load_item()

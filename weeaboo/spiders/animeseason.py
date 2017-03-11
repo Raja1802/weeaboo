@@ -1,5 +1,8 @@
 from scrapy import Spider, Request
 
+from ..loaders import AnimeLoader
+from ..items import Anime
+
 class AnimeseasonSpider(Spider):
     name = 'animeseason'
     allowed_domains = ['animeseason.com']
@@ -10,10 +13,8 @@ class AnimeseasonSpider(Spider):
             yield Request(response.urljoin(href), self.parse_anime)
 
     def parse_anime(self, response):
-        yield {}
+        loader = AnimeLoader(Anime(), response)
 
-        for href in response.css('.content_bloc > table td:first-child a::attr("href")').extract():
-            yield Request(response.urljoin(href), self.parse_episode)
 
-    def parse_episode(self, response):
-        yield {}
+
+        yield loader.load_item()

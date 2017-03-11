@@ -1,6 +1,9 @@
 from scrapy import Spider, Request
 
-class AnimeCrazySpider(Spider):
+from ..loaders import AnimeLoader
+from ..items import Anime
+
+class AnimecrazySpider(Spider):
     name = 'anime-crazy'
     allowed_domains = ['anime-crazy.org']
     start_urls = ['http://anime-crazy.org/animelist']
@@ -10,10 +13,8 @@ class AnimeCrazySpider(Spider):
             yield Request(href, self.parse_anime)
 
     def parse_anime(self, response):
-        yield {}
+        loader = AnimeLoader(Anime(), response)
 
-        for href in response.css('#epi_ul a::attr("href")').extract():
-            yield Request(href, self.parse_episode)
 
-    def parse_episode(self, response):
-        yield {}
+
+        yield loader.load_item()

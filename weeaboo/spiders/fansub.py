@@ -1,5 +1,8 @@
 from scrapy import Spider, Request
 
+from ..loaders import AnimeLoader
+from ..items import Anime
+
 class FansubSpider(Spider):
     name = 'fansub'
     allowed_domains = ['fansub.tv']
@@ -10,10 +13,8 @@ class FansubSpider(Spider):
             yield Request(response.urljoin(href), self.parse_anime)
 
     def parse_anime(self, response):
-        yield {}
+        loader = AnimeLoader(Anime(), response)
 
-        for href in response.css('.matv_center a::attr("href")').extract():
-            yield Request(response.urljoin(href), self.parse_episode)
 
-    def parse_episode(self, response):
-        yield {}
+
+        yield loader.load_item()
