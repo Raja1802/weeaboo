@@ -16,9 +16,8 @@ class AnimeplusSpider(Spider):
         loader = AnimeLoader(Anime(), response.css('#series_info'))
 
         loader.add_css('title', 'h1')
-        loader.add_css('category', 'span:contains("Category") + a')
-        # loader.add_xpath('status', '//div[./span[contains(.,"Status")]]/text()')
-        loader.add_css('image', '#series_image') # Use XPATH for text only
-        loader.add_css('synopsis', '#full_notes')
+        loader.add_xpath('status', '//div[contains(span, "Status")]/text()')
+        loader.add_xpath('synopsis', '//span[@id="full_notes"]/text()')
+        loader.add_css('image', '#series_image::attr("src")')
 
         yield loader.load_item()
