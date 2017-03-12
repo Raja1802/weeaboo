@@ -18,7 +18,7 @@ class StoragePipeline(object):
     def process_item(self, item, spider):
         columns = ', '.join(item.keys())
         placeholders = ':' + ', :'.join(item.keys())
-        query = 'INSERT INTO anime ({}) VALUES ({})'.format(columns, placeholders)
+        query = 'INSERT OR REPLACE INTO anime ({}) VALUES ({})'.format(columns, placeholders)
 
         self.cur.execute(query, dict(item))
         self.con.commit()

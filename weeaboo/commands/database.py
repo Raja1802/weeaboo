@@ -30,6 +30,8 @@ class Command(ScrapyCommand):
                 synopsis TEXT,
                 image TEXT
             )''')
+
+            cur.execute('CREATE UNIQUE INDEX anime_title_category ON anime (title, category)')
         elif args[0] == 'drop':
             cur.execute('DROP TABLE IF EXISTS anime')
 
