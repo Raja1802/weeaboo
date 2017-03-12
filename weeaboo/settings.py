@@ -13,6 +13,11 @@ HTTPCACHE_ENABLED = True
 HTTPCACHE_GZIP = True
 HTTPCACHE_EXPIRATION_SECS = 604800
 
+# Pipelines
+ITEM_PIPELINES = {
+    'weeaboo.pipelines.storage.StoragePipeline': 0,
+}
+
 # Miscellaneous
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
 COOKIES_ENABLED = False
