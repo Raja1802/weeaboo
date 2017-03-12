@@ -20,10 +20,11 @@ class StoragePipeline(object):
     def process_item(self, item, spider):
         anime = (
            item['title'],
+           item['category'],
            item['status'],
            item['synopsis'],
            item['image']
         )
-        self.cur.execute("INSERT INTO anime VALUES (?, ?, ?, ?)", anime)
+        self.cur.execute("INSERT INTO anime VALUES (?, ?, ?, ?, ?)", anime)
         self.con.commit()
         return item
