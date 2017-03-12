@@ -7,7 +7,7 @@ class StoragePipeline(object):
     @classmethod
     def from_crawler(cls, crawler):
         return cls (
-            filename = crawler.settings.get('BOT_NAME') + '.db',
+            filename = crawler.settings.get('DATABASE_URL')
         )
 
     def open_spider(self, spider):
