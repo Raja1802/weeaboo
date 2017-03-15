@@ -3,6 +3,7 @@ from scrapy import Spider, Request
 from ..loaders import AnimeLoader
 from ..items import Anime
 
+
 class AnimeplusSpider(Spider):
     name = 'animeplus'
     allowed_domains = ['animeplus.tv']

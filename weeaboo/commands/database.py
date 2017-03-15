@@ -3,6 +3,7 @@ import sqlite3
 from scrapy.commands import ScrapyCommand
 from scrapy.exceptions import UsageError
 
+
 class Command(ScrapyCommand):
 
     requires_project = True
@@ -18,7 +19,8 @@ class Command(ScrapyCommand):
         if len(args) != 1:
             raise UsageError()
 
-        con = sqlite3.connect(self.crawler_process.settings.get('DATABASE_URL'), uri=True)
+        con = sqlite3.connect(self.crawler_process.settings['DATABASE_URL'],
+                              uri=True)
         cur = con.cursor()
 
         if args[0] == 'create':

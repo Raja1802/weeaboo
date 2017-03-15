@@ -3,6 +3,7 @@ from scrapy import Spider, Request
 from ..loaders import AnimeLoader
 from ..items import Anime
 
+
 class AnimecrazySpider(Spider):
     name = 'anime-crazy'
     allowed_domains = ['anime-crazy.org']
@@ -14,7 +15,5 @@ class AnimecrazySpider(Spider):
 
     def parse_anime(self, response):
         loader = AnimeLoader(Anime(), response)
-
-
 
         yield loader.load_item()

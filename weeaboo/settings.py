@@ -7,7 +7,7 @@ COMMANDS_MODULE = 'weeaboo.commands'
 
 # Throttle
 AUTOTHROTTLE_ENABLED = True
-DOWNLOAD_DELAY=3
+DOWNLOAD_DELAY = 3
 
 # Cache
 HTTPCACHE_ENABLED = True

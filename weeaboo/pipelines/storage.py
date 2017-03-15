@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class StoragePipeline(object):
     def __init__(self, database_url):
         self.database_url = database_url

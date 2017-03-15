@@ -3,6 +3,7 @@ from scrapy import Spider, Request
 from ..loaders import AnimeLoader
 from ..items import Anime
 
+
 class FansubSpider(Spider):
     name = 'fansub'
     allowed_domains = ['fansub.tv']
@@ -14,7 +15,5 @@ class FansubSpider(Spider):
 
     def parse_anime(self, response):
         loader = AnimeLoader(Anime(), response)
-
-
 
         yield loader.load_item()

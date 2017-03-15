@@ -3,6 +3,7 @@ from scrapy import Spider, Request
 from ..loaders import AnimeLoader
 from ..items import Anime
 
+
 class AnilinkzSpider(Spider):
     name = 'anilinkz'
     allowed_domains = ['anilinkz.io']
@@ -14,7 +15,5 @@ class AnilinkzSpider(Spider):
 
     def parse_anime(self, response):
         loader = AnimeLoader(Anime(), response)
-
-
 
         yield loader.load_item()
