@@ -8,7 +8,6 @@
 
 ``` sh
 pip install -U Scrapy
-scrapy database create
 ```
 
 ## License

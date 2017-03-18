@@ -1,7 +1,7 @@
-from w3lib.html import remove_tags, strip_html5_whitespace
-
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import MapCompose, TakeFirst
+
+from w3lib.html import remove_tags, strip_html5_whitespace
 
 
 class AnimeLoader(ItemLoader):
