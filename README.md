@@ -7,7 +7,7 @@
 ## Install
 
 ``` sh
-pip install -U Scrapy
+pip install -U -r requirements.txt
 ```
 
 ## License
